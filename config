@@ -1,0 +1,28 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: certs/pmiia/k8s-ca.crt
+    server: https://132.248.194.163:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: oidc
+  name: oidc@kubernetes
+current-context: oidc@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: oidc
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - oidc-login
+      - get-token
+      - --oidc-issuer-url=https://sso.lamod.unam.mx/auth/realms/cudi
+      - --oidc-client-id=k8s
+      command: kubectl
+      env: null
+      interactiveMode: IfAvailable
+      provideClusterInfo: false
