@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Introduce el client secret proporcionado por el administrador"
+
+read client_secret
+
 if [ ! -d ~/.kube ]; then
   mkdir ~/.kube
 fi
@@ -12,5 +16,5 @@ kubectl config set-credentials oidc --exec-command=kubectl \
     --exec-arg="get-token" \
     --exec-arg="--oidc-issuer-url=https://sso.lamod.unam.mx/auth/realms/cudi" \
     --exec-arg="--oidc-client-id=k8s" \
-    --exec-arg="--oidc-client-secret=$1" \
+    --exec-arg="--oidc-client-secret=$client_secret" \
     --kubeconfig=$KUBECONFIG
