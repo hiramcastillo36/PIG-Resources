@@ -18,3 +18,7 @@ kubectl config set-credentials oidc --exec-command=kubectl \
     --exec-arg="--oidc-client-id=k8s" \
     --exec-arg="--oidc-client-secret=$client_secret" \
     --kubeconfig=$KUBECONFIG
+
+mkdir -p ~/.kube/certs/pmiia
+
+cp certs/k8s-ca.crt ~/.kube/certs/pmiia/k8s-ca.crt
