@@ -1,8 +1,11 @@
 #!/bin/bash
 
+
+sudo add-apt-repository ppa:wslutilities/wslu
 sudo apt-get update
 sudo apt-get install -y curl
 sudo apt-get install -y git
+sudo apt install wslu
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
