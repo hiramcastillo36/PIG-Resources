@@ -23,8 +23,8 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
   ./"${KREW}" install krew
 )
 
-kubectl krew install oidc-login
-
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 source ~/.bashrc
+
+kubectl krew install oidc-login
